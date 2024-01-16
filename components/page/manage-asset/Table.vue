@@ -4,6 +4,10 @@
       <div class="font-bold">{{ formatRupiah(row.cost) }}</div>
     </template>
 
+    <template #date-data="{ row }">
+      <div>{{ formatDate(row.date) }}</div>
+    </template>
+
     <template #status-data="{ row }">
       <div :class="statusRowClasses(row)">{{ row.status }}</div>
     </template>
@@ -105,4 +109,26 @@ const formatRupiah = (value: number) =>
     maximumFractionDigits: 0,
     minimumFractionDigits: 0,
   }).format(value);
+
+const formatDate = (value: string) => {
+  const date = new Date(value);
+
+  if (isNaN(date.valueOf())) {
+    return date.toString();
+  }
+
+  const day = date.toLocaleString("en-us", {
+    day: "numeric",
+  });
+
+  const month = date.toLocaleString("en-us", {
+    month: "short",
+  });
+
+  const year = date.toLocaleString("en-us", {
+    year: "numeric",
+  });
+
+  return `${day} ${month} ${year}`;
+};
 </script>
