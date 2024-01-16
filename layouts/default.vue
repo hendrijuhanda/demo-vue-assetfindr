@@ -8,26 +8,17 @@
       }"
     >
       <!-- Header logo -->
-      <div
-        class="flex-shrink-0 flex items-center"
-        :style="{ height: headerHeight }"
-      >
-        <header class="px-4">Logo here</header>
+      <div class="flex-shrink-0 flex items-center">
+        <header class="p-4 flex-grow flex justify-center">
+          <h1 class="sr-only">AssetFindr</h1>
+          <NuxtLink to="/" class="block"> <LayoutLogo /></NuxtLink>
+        </header>
       </div>
 
       <!-- Nav -->
       <div class="flex-grow">
         <aside>
-          <ul>
-            <li v-for="(nav, index) in navs" :key="index">
-              <LayoutNavItem
-                :link="nav.link"
-                :icon="nav.icon"
-                :label="nav.label"
-                :is-active="$route.name === nav.routeName"
-              />
-            </li>
-          </ul>
+          <LayoutNav />
         </aside>
       </div>
     </div>
@@ -39,12 +30,14 @@
         class="flex-shrink-0 flex items-center border-b"
         :style="{ height: headerHeight }"
       >
-        <header class="px-4">Header here</header>
+        <header class="px-4 flex-grow">
+          <LayoutHeader />
+        </header>
       </div>
 
       <!-- Main page -->
       <div class="flex-grow bg-blue-50">
-        <main>
+        <main class="m-4 bg-white rounded p-4 drop-shadow">
           <slot />
         </main>
       </div>
@@ -53,29 +46,6 @@
 </template>
 
 <script setup lang="ts">
-interface Nav {
-  icon: string;
-  link: string;
-  label: string;
-  routeName: string;
-}
-
 const sidebarWidth: string = "300px";
 const headerHeight: string = "60px";
-
-const navs: Nav[] = [
-  { icon: "i-heroicons-home", link: "/", label: "Home", routeName: "index" },
-  {
-    icon: "i-heroicons-window",
-    link: "/manage-asset",
-    label: "Manage Assets",
-    routeName: "manage-asset",
-  },
-  {
-    icon: "i-heroicons-cog-6-tooth",
-    link: "/setting",
-    label: "Settings",
-    routeName: "setting",
-  },
-];
 </script>
