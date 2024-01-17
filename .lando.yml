@@ -15,3 +15,7 @@ tooling:
 proxy:
   nginx:
     - vue-assetfindr.lndo.site
+events:
+  post-start:
+    - node:
+        - npm install && npm run generate
