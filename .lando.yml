@@ -7,9 +7,6 @@ services:
     type: node:18
     ports:
       - 3000:3000
-    run:
-      - npm install
-      - npm run generate
 tooling:
   npm:
     service: node
@@ -18,3 +15,7 @@ tooling:
 proxy:
   nginx:
     - vue-assetfindr.lndo.site
+events:
+  post-start:
+    - node:
+        - npm install && npm run generate

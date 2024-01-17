@@ -5,7 +5,7 @@
         :link="nav.link"
         :icon="nav.icon"
         :label="nav.label"
-        :is-active="$route.name === nav.routeName"
+        :is-active="isActive(nav.routeName)"
       />
     </li>
   </ul>
@@ -34,4 +34,12 @@ const navs: Nav[] = [
     routeName: "setting",
   },
 ];
+
+const route = useRoute();
+
+const isActive = (navRoutename: string) => {
+  const name = (route.name || "") as string;
+
+  return name.startsWith(navRoutename);
+};
 </script>

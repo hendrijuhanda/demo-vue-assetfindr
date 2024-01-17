@@ -36,7 +36,7 @@
       </div>
 
       <!-- Main page -->
-      <div class="flex-grow bg-blue-50">
+      <div class="flex-grow overflow-y-auto bg-blue-50">
         <main class="m-4 bg-white rounded p-4 drop-shadow">
           <slot />
         </main>

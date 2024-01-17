@@ -21,7 +21,7 @@
 import { useAssets } from "~/queries/assets";
 
 const { setLayoutState } = useLayoutState();
-const { assetList, setAssetList } = useAssets();
+const { assetList, fetchInitialData } = useAssets();
 
 const isLoading = ref<boolean>(false);
 const searchParam = ref<string>("");
@@ -42,11 +42,7 @@ onMounted(async () => {
   if (!assetList.value.length) {
     isLoading.value = true;
 
-    await fetch("/data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setAssetList(data);
-      });
+    await fetchInitialData();
 
     isLoading.value = false;
   }

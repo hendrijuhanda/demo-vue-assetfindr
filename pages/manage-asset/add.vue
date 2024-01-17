@@ -2,7 +2,11 @@
   <div>
     <SharedPageHeader title="Add Asset" back-link="/manage-asset" />
 
-    <div></div>
+    <div>
+      <div>
+        <PageManageAssetAddForm />
+      </div>
+    </div>
   </div>
 </template>
 

@@ -16,7 +16,6 @@
     "AssetName": "Forklift Truck",
     "Category": "Vehicle",
     "Status": "Inactive",
-
     "ModelNumber": "FT400",
     "SerialNumber": "SN9876543210",
     "Description": "Toyota Forklift 2020",
@@ -67,7 +66,6 @@
     "Status": "Active",
     "ModelNumber": "TRK3000",
     "SerialNumber": "SN9988776655",
-
     "Description": "Isuzu NPR Truck",
     "PurchaseCost": 820000000,
     "PurchaseDate": "2023-01-10",

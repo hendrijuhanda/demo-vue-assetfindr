@@ -18,11 +18,26 @@ export const useAssets = () => {
     assetList.value = data;
   };
 
-  const addAsset = () => {};
+  const fetchInitialData = async () => {
+    return await fetch("/data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setAssetList(data);
+      });
+  };
+
+  const addAsset = async (data: Asset) => {
+    if (!assetList.value.length) {
+      await fetchInitialData();
+    }
+
+    assetList.value = [data, ...assetList.value];
+  };
 
   return {
     assetList,
     setAssetList,
+    fetchInitialData,
     addAsset,
   };
 };
