@@ -19,7 +19,9 @@ export const useAssets = () => {
   };
 
   const fetchInitialData = async () => {
-    return await fetch("/data.json")
+    const config = useRuntimeConfig();
+
+    return await fetch(`${config.app.baseURL}data.json`)
       .then((res) => res.json())
       .then((data) => {
         setAssetList(data);
